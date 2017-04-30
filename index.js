@@ -17,7 +17,6 @@ nunjucks.configure( path.join(__dirname, 'templates'), {
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use('/static', express.static(path.join(__dirname, 'public')))
-app.use(session({secret: 'pass',saveUninitialized: true,resave: true}))
 
 routes.routes(app)
 

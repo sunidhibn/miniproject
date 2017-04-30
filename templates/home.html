@@ -1,46 +1,87 @@
 {% extends "base.html" %}
 
+{% block head %}
+<link href="/static/css/fullcalendar.min.css" rel='stylesheet'>
+<script type="text/javascript" src="/static/js/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+<script type="text/javascript" src="/static/js/events.js"></script>
+{% endblock %}
+
 {% block content %}
+<div class="col-md-8">
+<div id='calendar'></div>
+</div>
+<div class="col-md-4">
+<h3>Create Event</h3>  
+<!-- event form -->
+<!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
 
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
 
-<form class="form-horizontal" method='POST' action="/login" enctype="application/x-www-form-urlencoded">
-<fieldset>
-
-<!-- Form Name -->
-<legend>Login</legend>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="txtname">username</label>  
-  <div class="col-md-4">
-  <input id="txtname" name="username" type="text" placeholder="enter name" class="form-control input-md">
-    
+<!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+<div class="bootstrap-iso">
+ <div class="container-fluid">
+  <div class="row">
+   <div>
+    <form method="post">
+     <div class="form-group ">
+      <label class="control-label requiredField" for="name">
+       Event Name
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" id="name" name="name" placeholder="event name" type="text" required />
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="date">
+       Date
+      </label>
+      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="datetime-local" required />
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="date1">
+       Date
+      </label>
+      <input class="form-control" id="date1" name="date1" placeholder="MM/DD/YYYY" type="datetime-local"/>
+     </div>
+     <div class="form-group ">
+      <label class="control-label " for="select">
+       Select a Room
+      </label>
+      <select class="select form-control" id="select" name="select">
+       <option value="First Choice">
+        First Choice
+       </option>
+       <option value="Second Choice">
+        Second Choice
+       </option>
+       <option value="Third Choice">
+        Third Choice
+       </option>
+      </select>
+     </div>
+     <div class="form-group">
+      <div>
+       <button class="btn btn-primary " name="submit" type="submit">
+        Submit
+       </button>
+      </div>
+     </div>
+    </form>
+   </div>
   </div>
+ </div>
 </div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="txtlastname">password</label>  
-  <div class="col-md-4">
-  <input id="txtlastname" name="password" type="password" placeholder="enter password" class="form-control input-md">
-    
-  </div>
+<!-- end form -->
+
 </div>
-
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="submit"></label>
-  <div class="col-md-4">
-    <button id="add" name="submit" class="btn btn-primary">Login</button><br><br>
-    <p id=ms><b>{{ msg }}</b></p>
-
-  </div>
-</div>
-
-
-</fieldset>
-</form>
-
-
-
 {% endblock %} 
+
+{% block static  %}
+
+
+{% endblock %}

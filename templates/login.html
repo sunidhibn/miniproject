@@ -1,70 +1,42 @@
 {% extends "base.html" %}
 
-{% block login %}
-
- <a  class="navbar-brand" href="/">
-       Logout
- </a> 
- <p>Logged in as : sess.user </p>
-{% endblock %}
-
-
 {% block content %}
 
 
-
-<form class="form-horizontal">
+<form class="form-horizontal" method='POST' action="/login" enctype="application/x-www-form-urlencoded">
 <fieldset>
 
 <!-- Form Name -->
-<legend>roominfo</legend>
+<legend>Login</legend>
 
-{% for info in info %}
-  <li>office {{ info.officeid }}</li>
-  <li>dept {{ info.deptid }}</li>
-  <li>room {{ info.roomid }}</li>
-{% endfor %}
-</ul>
-
-
-
-
-
-
-<!-- Select Basic -->
+<!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="office">Select Office</label>
+  <label class="col-md-4 control-label" for="txtname">username</label>  
   <div class="col-md-4">
-    <select id="office" name="office" class="form-control">
-    </select>
+  <input id="txtname" name="username" type="text" placeholder="enter name" class="form-control input-md">
+    
   </div>
 </div>
 
-<!-- Select Basic -->
+<!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="dept">Select Rooms</label>
+  <label class="col-md-4 control-label" for="txtlastname">password</label>  
   <div class="col-md-4">
-    <select id="dept" name="dept" class="form-control">
-    </select>
+  <input id="txtlastname" name="password" type="password" placeholder="enter password" class="form-control input-md">
+    
   </div>
 </div>
-
-
-
-  </div>
-</div>
-
-
-<input type="date" name="date">
-<input type="time" name="tim">
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="checkbtn"></label>
+  <label class="col-md-4 control-label" for="submit"></label>
   <div class="col-md-4">
-    <button id="checkbtn" name="checkbtn" class="btn btn-primary">check rooms</button>
+    <button id="add" name="submit" class="btn btn-primary">Login</button><br><br>
+    <p id=ms><b>{{ msg }}</b></p>
+
   </div>
 </div>
+
 
 </fieldset>
 </form>

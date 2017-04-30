@@ -1,0 +1,23 @@
+{
+  "name": "node-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "sunidhi",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "google-auth-library": "^0.10.0",
+    "googleapis": "^19.0.0",
+    "mongoose": "^4.9.2",
+    "mysql": "^2.13.0",
+    "nunjucks": "^3.0.0",
+    "pug": "^2.0.0-beta11",
+    "squel": "^5.8.0"
+  }
+}

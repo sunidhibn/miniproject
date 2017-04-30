@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<form class="form-horizontal" method='POST' action="/login" enctype="application/x-www-form-urlencoded">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Login</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtname">username</label>  
+  <div class="col-md-4">
+  <input id="txtname" name="username" type="text" placeholder="enter name" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="txtlastname">password</label>  
+  <div class="col-md-4">
+  <input id="txtlastname" name="password" type="password" placeholder="enter password" class="form-control input-md">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="add" name="submit" class="btn btn-primary">Login</button><br><br>
+    <p id=ms><b>{{ msg }}</b></p>
+
+  </div>
+</div>
+
+
+</fieldset>
+</form>
+
+
+
+{% endblock %} 

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block login %}
+
+ <a  class="navbar-brand" href="/">
+       Logout
+ </a> 
+ <p>Logged in as : sess.user </p>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>roominfo</legend>
+
+{% for info in info %}
+  <li>office {{ info.officeid }}</li>
+  <li>dept {{ info.deptid }}</li>
+  <li>room {{ info.roomid }}</li>
+{% endfor %}
+</ul>
+
+
+
+
+
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="office">Select Office</label>
+  <div class="col-md-4">
+    <select id="office" name="office" class="form-control">
+    </select>
+  </div>
+</div>
+
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="dept">Select Rooms</label>
+  <div class="col-md-4">
+    <select id="dept" name="dept" class="form-control">
+    </select>
+  </div>
+</div>
+
+
+
+  </div>
+</div>
+
+
+<input type="date" name="date">
+<input type="time" name="tim">
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="checkbtn"></label>
+  <div class="col-md-4">
+    <button id="checkbtn" name="checkbtn" class="btn btn-primary">check rooms</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+
+
+{% endblock %} 

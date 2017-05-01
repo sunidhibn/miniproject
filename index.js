@@ -2,7 +2,6 @@ var express= require('express')
 var bodyParser = require('body-parser')
 var path= require('path')
 var session= require('express-session');
-var dialog= require('dialog')
 var nunjucks= require( 'nunjucks' )
 var config = require("./config.js")
 var routes= require('./routes.js')

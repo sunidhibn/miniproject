@@ -25,7 +25,7 @@
  <div class="container-fluid">
   <div class="row">
    <div>
-    <form method="post">
+    <form method="post" action="/">
      <div class="form-group ">
       <label class="control-label requiredField" for="name">
        Event Name
@@ -33,25 +33,25 @@
         *
        </span>
       </label>
-      <input class="form-control" id="name" name="name" placeholder="event name" type="text" required />
+      <input class="form-control" id="name" name="eventname" placeholder="event name" type="text" required />
      </div>
      <div class="form-group ">
       <label class="control-label " for="date">
        Date
       </label>
-      <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="datetime-local" required />
+      <input class="form-control" id="date" name="stdate" placeholder="MM/DD/YYYY" type="datetime-local" required />
      </div>
      <div class="form-group ">
       <label class="control-label " for="date1">
        Date
       </label>
-      <input class="form-control" id="date1" name="date1" placeholder="MM/DD/YYYY" type="datetime-local"/>
+      <input class="form-control" id="date1" name="enddate" placeholder="MM/DD/YYYY" type="datetime-local" required/>
      </div>
      <div class="form-group ">
       <label class="control-label " for="select">
        Select a Room
       </label>
-      <select class="select form-control" id="select" name="select">
+      <select class="select form-control" id="select" name="roomselect" required>
        <option value="First Choice">
         First Choice
        </option>

@@ -1,5 +1,10 @@
 var auth = require("./handlers/auth.js")
-var book = require("./handlers/book.js")
+//var book = require("./handlers/book.js")
+var events = require("./handlers/events.js")
+var home = require("./handlers/home.js")
+var office = require("./handlers/office.js")
+var dept = require("./handlers/dept.js")
+
 
 function route(app){
 
@@ -23,17 +28,21 @@ function route(app){
 				res.render('login.html', { error: true})
 			}else{
 				req.session.user = user
+
 				res.redirect('/')
 			}
 		}); 
 	})
 	
 
-	app.get('/', Auth, function(req,res){
-			return res.render('home.html',  { user:req.session.user})
-		})
+	app.get('/', Auth, home.getHomepage)
+	app.post('/', Auth, home.bookRoom)
 
 
+
+
+
+    app.get('/events/:roomId', Auth, events.getEvents)
 	// app.post('/',function(req,res){
 	// 	var eventname=req.body.eventname
 	// 	var startdate=req.body.stdate;
@@ -53,12 +62,18 @@ function route(app){
 
 
 	app.get('/office', Auth, function(req,res){
-			return res.render('office.html', { user:req.session.user})
+			return res.render('office.html')
 		})
 
-	app.get('/dept', Auth,  function(req,res){
-			return res.render('dept.html')
-		})
+	app.post('/office',Auth, office.addOffice)
+
+
+
+	app.get('/dept', Auth, dept.getOfficelist)
+	app.post('/dept', Auth, dept.addDept)
+
+
+	
 
 
 	app.get('/rooms', Auth,  function(req,res){
@@ -80,5 +95,18 @@ function route(app){
     app.get('/profile', Auth,  function(req,res){
 			return res.render('profile.html')
 		})
+
+    app.get('/logout', Auth,  function(req,res){
+			req.session.destroy(function(err) {
+  				if (err){
+  					console.log(err)
+  				}
+  				else{
+  					res.redirect('/')
+  				}
+			})
+
+		})
+
 }
 exports.routes = route

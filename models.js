@@ -49,9 +49,9 @@ var booking= "CREATE TABLE IF NOT EXISTS booking ( \
 			  id SERIAL NOT NULL PRIMARY KEY,bookingid VARCHAR(15),\
 			  created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\
 			  udpated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\
-			  eventname VARCHAR(25) NOT NULL,\
-			  startevent DATETIME NOT NULL,\
-			  endevent DATETIME NOT NULL,\
+			  name VARCHAR(25) NOT NULL,\
+			  start DATETIME NOT NULL,\
+			  end DATETIME NOT NULL,\
 			  roomid int REFERENCES room(id),\
 			  userid int REFERENCES user(id));"
 

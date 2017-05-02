@@ -18,7 +18,9 @@
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">
-        Booking
+      
+      <span class="glyphicon glyphicon-bold" aria-hidden="true">ooking</span>
+        
       </a>
     </div>
       <div class="nav navbar-nav navbar-right">
@@ -27,14 +29,16 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ user.first_name }}<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
           {% if user.role <= 1 %}
-            <li><a href="#">Rooms</a></li>
-            <li><a href="#">Office</a></li>
-            <li><a href="#">Users</a></li>
-            <li><a href="#">Departments</a></li>
+            
+            <li><a href="/office">Office</a></li>
+            <li><a href="/dept">Departments</a></li>
+            <li><a href="/rooms">Rooms</a></li>
+            <li><a href="/users">Users</a></li>
+            
             {% endif %}
-             <li><a href="#">Edit Profile</a></li>
+             <li><a href="/profile">Edit Profile</a></li>
             <li class="divider"></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="/logout">Logout</a></li>
           </ul>
         </li>
         {% endif %}

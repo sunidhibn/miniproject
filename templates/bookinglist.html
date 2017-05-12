@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div>
+    <ul class="nav navbar-nav navbar-right">
+        <li><!-- Button trigger modal -->
+        <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          Cancel Booking
+        </a>
+      </li>
+    </ul>
+</div>
+	
+<div class="col-md-12">
+
+<!--adding room list-->
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Booking id</th>
+      <th>Event name</th>
+      <th>Room name</th>
+      <th>Start time</th>
+      <th>Endtime</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for i in bookings %}
+      <tr>
+      <td>{{i.id}}</td>
+      <td>{{i.title}}</td>
+      <td>{{i.roomname}}</td>
+      <td>{{i.start}}</td>
+      <td>{{i.end}}</td>
+      </tr>
+      {% endfor %}
+  </tbody>
+    </table>
+</div>
+
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Cancel Ticket</h4>
+      </div>
+      <div class="modal-body">
+       <!-- form start -->
+<form method="post"  class="form-horizontal">
+
+<fieldset>
+
+<!-- Form Name -->
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-5 control-label" for="seatno">Booking id</label>  
+  <div class="col-md-7">
+  <input id="canid" name="bookid" type="number" placeholder="" class="form-cancel input-md" required=""> 
+  <span class="help-block">Enter the booking id you wants to cancel</span>  
+  </div>
+</div
+
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="btn"></label>
+  <div class="col-md-5">
+    <button id="btn" name="btn" class="btn btn-primary" type="submit">Cancel Booking</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+       <!-- endform -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+	{% endblock %}

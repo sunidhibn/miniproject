@@ -12,6 +12,7 @@ module.exports= function(first_name,last_name,email,password,role){
 					     password: password,
 					     role: role})
 			.toString()
+			
 	connection.query(query, function(err){
 		if(err)
 			console.log(err)

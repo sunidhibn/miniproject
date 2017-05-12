@@ -5,6 +5,8 @@ var connection = mysql.createConnection(config)
 
 var role = { 0:"superuser", 1: "staff", 2: "user"}
 
+var tz="SET time_zone = '+05:30';"
+
 var office = "CREATE TABLE IF NOT EXISTS office ( \
 			  id SERIAL NOT NULL PRIMARY KEY, \
 			  created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\
@@ -41,21 +43,21 @@ var user= "CREATE TABLE IF NOT EXISTS user ( \
 			  first_name VARCHAR(25) NOT NULL,\
 			  last_name VARCHAR(25) NOT NULL,\
 			  password VARCHAR(25) NOT NULL,\
-			  role int,\
-			  email VARCHAR(30) UNIQUE,contact VARCHAR(10) UNIQUE,\
+			  role int NOT NULL,\
+			  email VARCHAR(30) UNIQUE NOT NULL,contact VARCHAR(10) UNIQUE NOT NULL,\
 			  deptid int);"
 
 var booking= "CREATE TABLE IF NOT EXISTS booking ( \
-			  id SERIAL NOT NULL PRIMARY KEY,bookingid VARCHAR(15),\
+			  id SERIAL NOT NULL PRIMARY KEY,\
 			  created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,\
 			  udpated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\
-			  name VARCHAR(25) NOT NULL,\
+			  title VARCHAR(25) NOT NULL UNIQUE,\
 			  start DATETIME NOT NULL,\
 			  end DATETIME NOT NULL,\
 			  roomid int REFERENCES room(id),\
 			  userid int REFERENCES user(id));"
 
-var tables = [office, department, room, incharge, user, booking]
+var tables = [tz,office, department, room, incharge, user, booking]
 
 var createTable = function(){
 	async.each(tables, function(table,callback){

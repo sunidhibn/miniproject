@@ -1,9 +1,11 @@
 var auth = require("./handlers/auth.js")
-//var book = require("./handlers/book.js")
+var room = require("./handlers/room.js")
 var events = require("./handlers/events.js")
+var incharge = require("./handlers/incharge.js")
 var home = require("./handlers/home.js")
 var office = require("./handlers/office.js")
 var dept = require("./handlers/dept.js")
+var user = require("./handlers/user.js")
 
 
 function route(app){
@@ -38,59 +40,38 @@ function route(app){
 	app.get('/', Auth, home.getHomepage)
 	app.post('/', Auth, home.bookRoom)
 
+     app.get('/events/:roomId', Auth, events.getEvents)
+	
 
-
-
-
-    app.get('/events/:roomId', Auth, events.getEvents)
-	// app.post('/',function(req,res){
-	// 	var eventname=req.body.eventname
-	// 	var startdate=req.body.stdate;
-	// 	var enddate=req.body.enddate
-	// 	var room=req.body.roomselect
-
-	// 	book.bookroom(eventname,startdate,enddate,room, function(err,){
-
-	// 		if(err) console.log(err);
-
-	// 		else res.redirect('/')
-
-
-	// 	})
-
-	// })
-
+	app.get('/showbooking',Auth, home.getBooklist)
+	app.post('/showbooking',Auth, home.deleteBooking)
 
 	app.get('/office', Auth, function(req,res){
 			return res.render('office.html')
 		})
-
 	app.post('/office',Auth, office.addOffice)
 
 
 
 	app.get('/dept', Auth, dept.getOfficelist)
+	app.get('/dept/:offId',Auth,dept.getDeptlist)
 	app.post('/dept', Auth, dept.addDept)
 
 
 	
-
-
 	app.get('/rooms', Auth,  function(req,res){
 			return res.render('roomlist.html')
 		})
 
-	app.get('/rooms/new', Auth,  function(req,res){
-			return res.render('room.html')
-		})
-   
-    app.get('/users', Auth,  function(req,res){
-			return res.render('userlist.html')
-		})
+	app.get('/rooms/new', Auth, room.getOfficelist)
+	app.get('/incharge/:iId',Auth,incharge.getIncharge)	
+	app.post('/rooms/new',Auth,room.addRoom)
 
-    app.get('/users/new', Auth,  function(req,res){
-			return res.render('user.html')
-		})
+
+
+    app.get('/users', Auth, user.getUserlist)
+    app.post('/users',Auth, user.addUser)
+    
 
     app.get('/profile', Auth,  function(req,res){
 			return res.render('profile.html')

@@ -1,8 +1,12 @@
+
 $(document).ready(function() {
 
 // page is now ready, initialize the calendar...
 $('#calendar').fullCalendar({
         // put your options and callbacks here
+      utc:true,
+      timezone:'local',
+      ignoreTimezone: true,
       header: {
         left: 'prev,next today',
         center: 'title',
@@ -11,7 +15,9 @@ $('#calendar').fullCalendar({
       defaultDate: new Date(),
       navLinks: true, // can click day/week names to navigate views
       editable: false,
-      eventLimit: true, // allow "more" link when too many events
+      eventLimit: true,
+      
+       // allow "more" link when too many events
 })
 
 
@@ -24,7 +30,7 @@ function getEventsList(eventId){
   $.ajax({
     url:"/events/"+eventId, 
     success: function(res){
-      updateCalender(res.events)
+        updateCalender(res.events)
     }
   });
 }

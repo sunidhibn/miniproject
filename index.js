@@ -8,7 +8,13 @@ var routes= require('./routes.js')
 var models= require('./models.js')
 
 
+
 var app= express()
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json()); 
+
+
 
 nunjucks.configure( path.join(__dirname, 'templates'), {
     autoescape: true,

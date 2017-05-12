@@ -7,19 +7,24 @@
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th>#</th>
       <th>User id</th>
       <th>Email</th>
-      <th>Column headin</th>
+      <th>Dept id</th>
+      <th>Dept name</th>
+      <th>Office id</th>
+      <th>Office name</th>
     </tr>
   </thead>
-  <tbody>
+  {% for u in users %}
     <tr>
-      <td>1</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
+      <td>{{u.id}}</td>
+      <td>{{u.email}}</td>
+      <td>{{u.deptid}}</td>
+      <td>{{u.deptname}}</td>
+      <td>{{u.officeid}}</td>
+      <td>{{u.name}}</td>
+      </tr>
+  {% endfor %}
     </tbody>
     </table>
 </div>
@@ -27,10 +32,104 @@
 <div class="col-md-4">
 
 <center>
-<a href="#" class="btn btn-primary">Create User</a>
+<a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Create User</a>
 </center>
 
 </div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add User</h4>
+      </div>
+      <div class="modal-body">
+       <!-- form start -->
+<fieldset>
+<form method="post" >
+    
+     <div class="form-group ">
+      <label class="control-label requiredField" for="name">
+       User firstname
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" id="fname" name="fname" type="text" required />
+     </div>
+     <div class="form-group ">
+      <label class="control-label requiredField" for="name">
+       User lastname
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" id="lname" name="lname" type="text" required />
+     </div>
+     <div class="form-group ">
+      <label class="control-label requiredField" for="email">
+       Email
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" id="email" name="email" type="email" required />
+     </div>
+     <div class="form-group ">
+      <label class="control-label requiredField" for="tel">
+       Contact no.
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" id="tel" name="tel" type="text" required />
+     </div>
+     <div class="form-group ">
+      <label class="control-label requiredField" for="officeselect">
+       enter Dept id
+       <span class="asteriskField">
+        *
+       </span>
+       <input class="form-control" id="password" name="deptid" type="number"/>
+      </label>
+      
+     </div>
+     </div>
+     <div class="form-group ">
+      <label class="control-label requiredField" for="password">
+        Password
+       <span class="asteriskField">
+        *
+       </span>
+      </label>
+      <input class="form-control" id="password" name="password" type="password"/>
+     </div>
+
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="btn"></label>
+  <div class="col-md-5">
+    <button id="btn" name="btn" class="btn btn-primary" type="submit">Add</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+       <!-- endform -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 	{% endblock %}

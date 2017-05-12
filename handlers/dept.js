@@ -44,7 +44,31 @@ var addDept=function(req,res){
 
 }
 
+var getDeptlist=function(req,res){
+
+
+	var offId= req.params.offId
+
+
+	var query= squel.select()
+				.from("department as d")
+				.field("d.id,d.deptname")
+				.where("officeid = ? ",offId)
+				.toString()
+
+	connection.query(query,function(err,rows){
+
+			if (err)
+				console.log(err)
+			else 
+				res.json({ depts: rows})
+	})
+
+
+}
+
 
 
 exports.getOfficelist=getOfficelist
 exports.addDept=addDept
+exports.getDeptlist=getDeptlist

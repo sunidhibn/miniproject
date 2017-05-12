@@ -7,49 +7,37 @@
 
 <!-- Inline CSS based on choices in "Settings" tab -->
 <style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}.bootstrap-iso form button, .bootstrap-iso form button:hover{color: white !important;} .asteriskField{color: red;}</style>
-
+<script type="text/javascript" src="/static/js/getdept.js"></script>
 
 {% endblock %}
-
-
-{% block content%}
+{% block content %}
 
 <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
-
-
 <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
 <div class="bootstrap-iso">
  <div class="container-fluid">
   <div class="row">
    <div class="col-md-6 col-sm-6 col-xs-12">
-    <form method="post">
+    <form method="post" id="form1">
     <h4>Create Room</h4>
      <div class="form-group ">
-      <label class="control-label requiredField" for="name">
+      <label class="control-label requiredField" for="">
        Room name
        <span class="asteriskField">
         *
        </span>
       </label>
-      <input class="form-control" id="name" name="name" type="text"/>
+      <input class="form-control"  name="name" type="text"/>
      </div>
-     <div class="form-group ">
-      <label class="control-label requiredField" for="inchargename">
-       Incharge Name
-       <span class="asteriskField">
-        *
-       </span>
-      </label>
-      <input class="form-control" id="inchargename" name="inchargename" type="text"/>
-     </div>
+     
      <div class="form-group ">
       <label class="control-label requiredField" for="tel">
-       Incharge contact no.
+       Incharge Id 
        <span class="asteriskField">
         *
        </span>
       </label>
-      <input class="form-control" id="tel" name="tel" type="text"/>
+      <input class="form-control" name="inchid" type="text"/>
      </div>
      <div class="form-group ">
       <label class="control-label requiredField" for="select">
@@ -58,16 +46,10 @@
         *
        </span>
       </label>
-      <select class="select form-control" id="select" name="select">
-       <option value="First Choice">
-        First Choice
-       </option>
-       <option value="Second Choice">
-        Second Choice
-       </option>
-       <option value="Third Choice">
-        Third Choice
-       </option>
+      <select class="select form-control" id="office" name="select">
+        {% for off in off %}
+       <option value="{{ off.id }}">{{ off.name }}</option>
+       {% endfor %}
       </select>
      </div>
      <div class="form-group ">
@@ -77,36 +59,45 @@
         *
        </span>
       </label>
-      <div class=" ">
-       <div class="checkbox">
-        <label class="checkbox">
-         <input name="checkbox" type="checkbox" value="First Choice"/>
-         First Choice
-        </label>
-       </div>
-       <div class="checkbox">
-        <label class="checkbox">
-         <input name="checkbox" type="checkbox" value="Second Choice"/>
-         Second Choice
-        </label>
-       </div>
-       <div class="checkbox">
-        <label class="checkbox">
-         <input name="checkbox" type="checkbox" value="Third Choice"/>
-         Third Choice
-        </label>
-       </div>
+      
+      <div id="append" name="append">
       </div>
+
+
+
+
      </div>
      <div class="form-group">
       <div>
-       <button class="btn btn-primary " name="submit" type="submit">
+       <button class="btn btn-primary " id="submit" name="submit" type="submit">
         Submit
        </button>
       </div>
      </div>
     </form>
    </div>
+
+   <div class="col-md-6 col-sm-6 col-xs-12">
+   <h4>Incharge list in office</h4>
+    <table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Incharge name</th>
+      <th>Mob no</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="inchlist">  
+  </tbody>
+</table>
+
+
+
+   </div>
+
+
+
   </div>
  </div>
 </div>

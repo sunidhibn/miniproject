@@ -10,10 +10,7 @@ var sendSms=function(event){
 
 var usertext="Hello! Your Booking is confirmed  for the event : "+ event.title + " in Room :" + event.roomname + " and your Booking id :" + event.id+ " , Room incharge contact no. "+ event.inchargecontact+" Thankyou"
 var inchtext="Hello!! " +event.roomname+" is booked from "+event.start+" to "+event.end+" for the event : "+event.title+". contact No of department : " +event.contact+" Thankyou"
-	console.log(usertext);
-
-	console.log(inchtext);
-
+	
 var param1 = {
     'src': '+917411640829', // Sender's phone number with country code
     'dst' :'+91'+event.contact, // Receiver's phone Number with country code

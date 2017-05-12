@@ -11,8 +11,7 @@ var getUserlist=function(req,res){
 				.where("u.deptid=d.id and d.officeid=o.id")
 				.toString()
 
-				console.log(query);
-
+				
 		connection.query(query,function(err,rows){
 
 			if (err)
@@ -46,8 +45,6 @@ var addUser=function(req,res){
 		        .set("deptid",did)
 		        .toString()
 						
-
-				console.log(query);
 
 		connection.query(query,function(err,rows){
 

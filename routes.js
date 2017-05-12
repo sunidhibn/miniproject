@@ -28,9 +28,9 @@ function route(app){
 		auth.login(email, pass, function(error, user){
 			if(typeof user === 'undefined'){
 				res.render('login.html', { error: true})
-			}else{
+			}
+			else{
 				req.session.user = user
-
 				res.redirect('/')
 			}
 		}); 
@@ -40,11 +40,13 @@ function route(app){
 	app.get('/', Auth, home.getHomepage)
 	app.post('/', Auth, home.bookRoom)
 
-     app.get('/events/:roomId', Auth, events.getEvents)
+    app.get('/events/:roomId', Auth, events.getEvents)
 	
 
 	app.get('/showbooking',Auth, home.getBooklist)
 	app.post('/showbooking',Auth, home.deleteBooking)
+
+	
 
 	app.get('/office', Auth, function(req,res){
 			return res.render('office.html')
@@ -59,17 +61,22 @@ function route(app){
 
 
 	
-	app.get('/rooms', Auth,  function(req,res){
-			return res.render('roomlist.html')
-		})
+	app.get('/rooms', Auth,room.getRoomslist)  
 
 	app.get('/rooms/new', Auth, room.getOfficelist)
 	app.get('/incharge/:iId',Auth,incharge.getIncharge)	
 	app.post('/rooms/new',Auth,room.addRoom)
 
+	app.post('/incharge',Auth,incharge.addInch)
 
 
-    app.get('/users', Auth, user.getUserlist)
+	app.get('/incharge',Auth,function(req,res){
+		  return res.render('incharge.html')
+ 
+	})
+
+
+ 	app.get('/users', Auth, user.getUserlist)
     app.post('/users',Auth, user.addUser)
     
 

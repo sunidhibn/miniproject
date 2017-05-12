@@ -113,8 +113,6 @@ var deleteBooking=function(req,res){
         		   .where("id = ? ",bid)
         		   .toString()
 
-        		   console.log(query)
-
 
 		connection.query(query,function(err,row)
 		{

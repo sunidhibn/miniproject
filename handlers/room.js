@@ -22,41 +22,58 @@ var getOfficelist=function(req,res){
 
 }
 
+var getRoomslist=function(req,res){
+
+	var query=squel.select()
+			  .from("office o,department d,room r")
+			  .field("r.id,r.roomname,d.id as deptid, d.deptname, o.id as offid, o.name")
+			  .where("r.deptid=d.id and d.officeid=o.id")
+			   .order('d.id')
+			  .toString()
+
+	connection.query(query,function(err,rows){
+
+			if (err)
+				console.log(err)
+			else 
+				res.render('roomlist.html',{list:rows})
+	})
+
+
+}
+
+
+
 var addRoom=function(req,res){
 
 		
-		
-			console.log(req.body.name)
+	var name=req.body.name
+	var iid=req.body.inchid
+	var off=req.body.office
+	var deps=req.body.cb
 
 
-			for(i=0; i<req.body.length;i++){
-			console.log((req.body)[i])
+		for(i=0; i<deps.length;i++){
+
+		  	var query = squel.insert()
+		          .into("room")
+		          .set("roomname", name)
+		          .set("deptid",deps[i])
+		          .set("inchargeid",iid)
+		  		  .toString()
+
+
+			connection.query(query,function(err,msg){
+
+		 	if (err)
+		 		console.log(err)
+		 	})
+
 			
 
 		}
 
-		//console.log((req.body)[i].name)
-
-
-
-		// for(i=0; i<req.body.length;i++){
-		// 	var query = squel.insert()
-		//         .into("room")
-		//         .set("roomname", rname)
-		//         .set("deptid",(req.body)[i])
-		//         .set("inchargeid",inchid)
-		// 		.toString()
-
-
-		// 		connection.query(query,function(err,msg){
-
-		// 	if (err)
-		// 		console.log(err)
-		// 	else 
-		// 		{}
-		// })
-
-		//}
+		res.redirect('/rooms')
 
 		
 
@@ -67,3 +84,4 @@ var addRoom=function(req,res){
 
 exports.getOfficelist=getOfficelist
 exports.addRoom=addRoom
+exports.getRoomslist=getRoomslist

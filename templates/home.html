@@ -20,6 +20,14 @@
 <div id='calendar'></div>
 </div>
 <div class="col-md-4">
+<label class="control-label ">
+      <h4> Office : {{ user.name }}</h4>
+      </label><br><br>
+      <label class="control-label ">
+       <h4>Department : {{ user.deptname }}</h4>
+      </label><br><br>
+
+
 <h3>Create Event</h3>  
 <!-- event form -->
 <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
@@ -33,8 +41,9 @@
  <div class="container-fluid">
   <div class="row">
    <div>
-    <form method="post" action="/">
+    <form method="post">
      <div class="form-group ">
+
       <label class="control-label requiredField" for="name">
        Event Name
        <span class="asteriskField">
@@ -45,13 +54,13 @@
      </div>
      <div class="form-group ">
       <label class="control-label " for="date">
-       Date
+       Start Date
       </label>
       <input class="form-control" id="date" name="stdate" placeholder="MM/DD/YYYY" type="datetime-local" required />
      </div>
      <div class="form-group ">
       <label class="control-label " for="date1">
-       Date
+       End Date
       </label>
       <input class="form-control" id="date1" name="enddate" placeholder="MM/DD/YYYY" type="datetime-local" required/>
      </div>

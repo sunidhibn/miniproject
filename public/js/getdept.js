@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 function getDept(){
   var offId = $("#office").find(":selected").val()
-  console.log(offId)
+  
   getDeptList(offId)
 }
 

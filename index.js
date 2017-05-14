@@ -3,13 +3,13 @@ var bodyParser = require('body-parser')
 var path= require('path')
 var session= require('express-session');
 var nunjucks= require( 'nunjucks' )
-var config = require("./config.js")
+var config = require('./config.js')
 var routes= require('./routes.js')
 var models= require('./models.js')
 
 
 
-var app= express()
+var app=express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json()); 
@@ -33,6 +33,4 @@ app.use(session({
 
 routes.routes(app)
 
-app.listen(8000,function(){
-	console.log("server listening on 8000")
-});
+app.listen(process.env.PORT || 5000)

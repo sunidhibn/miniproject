@@ -13,8 +13,10 @@ $('#submit').click(function(){
     var d1=new Date(ds);
     var d2=new Date(de);
 
-     if((d1>d2) || d1<d || d2<d)
+     if((d1>d2) || d1<d || d2<d){
          alert("Enter proper dates");
+         window.location.assign("/")
+       }
      else{
        $.ajax({
           type: "POST",

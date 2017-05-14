@@ -1,5 +1,5 @@
 {
-  "name": "node-example",
+  "name": "conf_booking",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,7 @@
   "author": "sunidhi",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.4.0",
     "body-parser": "^1.17.1",
     "connect": "^3.6.1",
     "express": "^4.15.2",

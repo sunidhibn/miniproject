@@ -6,9 +6,9 @@ var connection= mysql.createConnection(config.mysql)
 
 var login = function(email, password, callback){
 	var query = squel.select()
-				.from("user")
-				.field("user.email, user.id, user.first_name, user.last_name, user.role, user.deptid")
-				.where("email = ? AND password = ?", email, password)
+				.from("user, department as d,office as o")
+				.field("user.email, user.id, user.first_name, user.last_name, user.role, user.deptid, o.name,d.deptname")
+				.where("email = ? AND password = ? and user.deptid=d.id and d.officeid=o.id", email, password)
 				.toString()
 				
 	connection.query(query, function(error, rows){
